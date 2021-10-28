@@ -1,24 +1,19 @@
 package com.maththomaz.animeapibydevdojo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
 
 @AllArgsConstructor
-@Builder
-@Data
 @Entity
+@Getter
+@NoArgsConstructor
+@Setter
 public class Anime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "The anime name cannot be empty")
+    @Column(nullable = false)
     private String name;
 }
