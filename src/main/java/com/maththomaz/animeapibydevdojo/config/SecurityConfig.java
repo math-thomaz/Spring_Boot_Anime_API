@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-//                csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//                Para habilitar o CSRF Token, comentar o disable() e habilitar as duas linhas abaixo:
+//                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .authorizeRequests()
                 .antMatchers("/api/v1/animes/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/v1/animes/**").hasRole("USER")
@@ -51,11 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("Password encoded {}", passwordEncoder.encode("salaal"));
 
         auth.inMemoryAuthentication()
-                .withUser("user")
+                .withUser("admin")
                 .password(passwordEncoder.encode("salaal"))
                 .roles("USER", "ADMIN")
                 .and()
-                .withUser("admin")
+                .withUser("user")
                 .password(passwordEncoder.encode("salaal"))
                 .roles("USER");
 

@@ -16,9 +16,10 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Builder
-@Data
 @Entity
+@Getter
 @NoArgsConstructor
+@Setter
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
